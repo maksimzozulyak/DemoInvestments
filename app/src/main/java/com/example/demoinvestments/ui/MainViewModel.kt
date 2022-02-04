@@ -6,7 +6,7 @@ import com.example.demoinvestments.data.Stock
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class ViewModel(private val repository: Repository) : ViewModel() {
+class MainViewModel(private val repository: Repository) : ViewModel() {
 
     // In coroutines thread insert item in insert function.
     fun insert(item: Stock) = GlobalScope.launch {
