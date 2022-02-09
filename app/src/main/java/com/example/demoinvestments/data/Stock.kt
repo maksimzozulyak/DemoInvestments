@@ -8,17 +8,17 @@ import androidx.room.PrimaryKey
 data class Stock(
 
     @ColumnInfo(name = "token")
-    val token : String?,
+    val token : String? = null,
     @ColumnInfo(name = "name")
-    val name : String?,
+    val name : String? = null,
     @ColumnInfo(name = "currentPrice")
-    var currentPrice : Float?,
+    var currentPrice : Float? = null,
     @ColumnInfo(name = "currency")
-    val currency: String?,
+    val currency: String? = null,
     @ColumnInfo(name = "logoUrl")
-    var logoUrl: String?,
+    var logoUrl: String? = null,
     @ColumnInfo(name = "myStock")
-    var myStock: Float?
+    var myStock: Float? = null
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

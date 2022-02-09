@@ -19,6 +19,6 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     }
 
     //Here we initialized allGroceryItems function with repository
-    fun allGroceryItems() = repository.allStocks()
+    fun allStocks() = repository.allStocks()
 
 }
