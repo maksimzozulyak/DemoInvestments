@@ -4,14 +4,20 @@
     android:layout_height="150dp"
     android:orientation="vertical">
 
+    <TextView
+        android:gravity="center"
+        android:id="@+id/stock_name_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="Enter stock token"
+        android:hint="Enter money"
         android:id="@+id/enter_token_edittext"
         android:layout_marginHorizontal="16dp"
         android:layout_weight="1"
-    />
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +27,13 @@
 
 
         <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete" />
+
+        <Button
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,11 +41,18 @@
             android:text="Cancel" />
 
         <Button
-            android:id="@+id/confirm_button"
+            android:id="@+id/sell_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ok" />
+            android:text="Sell" />
+
+        <Button
+            android:id="@+id/buy_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Buy" />
     </LinearLayout>
 
 </LinearLayout>

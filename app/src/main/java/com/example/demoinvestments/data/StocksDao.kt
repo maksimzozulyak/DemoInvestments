@@ -12,6 +12,12 @@ interface StocksDao {
     @Delete
     suspend fun delete(item: Stock)
 
+    @Update
+    suspend fun update(item: Stock)
+
     @Query("SELECT * FROM stocks")
     fun getAllStocks(): LiveData<List<Stock>>
+
+    @Query("SELECT * FROM stocks")
+    fun getStockList(): List<Stock>
 }

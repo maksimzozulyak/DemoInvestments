@@ -69,25 +69,4 @@
             android:text="TextView" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/actionLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/sell_stock_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/buy_stock_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Button" />
-    </LinearLayout>
-
 </LinearLayout>

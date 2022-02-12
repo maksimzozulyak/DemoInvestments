@@ -15,13 +15,13 @@ class DialogWindowAddingStock(context: Context, private val viewModel: MainViewM
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.add_stock_dialogwindow)
 
-        confirm_adding_button.setOnClickListener {
+        confirm_button.setOnClickListener {
 
             addStock(enter_token_edittext.text.toString(),viewModel)
             dismiss()
         }
 
-        cancel_adding_button.setOnClickListener {
+        cancel_button.setOnClickListener {
             cancel()
         }
     }

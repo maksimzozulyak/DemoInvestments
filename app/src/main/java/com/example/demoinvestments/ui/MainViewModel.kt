@@ -1,12 +1,16 @@
 package com.example.demoinvestments.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.demoinvestments.data.Repository
-import com.example.demoinvestments.data.Stock
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.jsoup.Jsoup
+import java.lang.Exception
+import android.content.SharedPreferences
+import com.example.demoinvestments.data.*
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+
+class MainViewModel(private val repository: Repository, private val sharedPreference : SharedPreferences) : ViewModel() {
 
     // In coroutines thread insert item in insert function.
     fun insert(item: Stock) = GlobalScope.launch {
@@ -18,7 +22,13 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         repository.delete(item)
     }
 
-    //Here we initialized allGroceryItems function with repository
+    fun update(item: Stock) = GlobalScope.launch {
+        repository.update(item)
+    }
+
+    var balance = sharedPreference.intLiveData("balance" , 228)
+
     fun allStocks() = repository.allStocks()
+    fun allStocksList() = repository.allStocksList()
 
 }
