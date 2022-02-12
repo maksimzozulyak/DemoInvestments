@@ -2,6 +2,7 @@ package com.example.demoinvestments.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.edit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val groceryRepository = Repository(StockDatabase(this))
-        val factory = FactoryViewModel(groceryRepository, this)
+        val repository = Repository(StockDatabase(this))
+        val factory = FactoryViewModel(repository, this)
 
         viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             updatePrice(viewModel,viewModel.allStocksList())
         }
+
 
         viewModel.allStocks().observe(this, Observer {
             adapter.list = it

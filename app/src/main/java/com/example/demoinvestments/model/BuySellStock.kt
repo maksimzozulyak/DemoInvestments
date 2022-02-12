@@ -10,6 +10,7 @@ fun buyStock(stock : Stock, money: Float,viewModel: MainViewModel) {
     newStock.myStock = stock.myStock!! + money/stock.currentPrice!!
 //    Values.balance = Values.balance!! - money
     viewModel.update(newStock)
+    viewModel.balance.value = 5
 }
 
 fun sellStock(stock : Stock, money: Float,viewModel: MainViewModel) {
