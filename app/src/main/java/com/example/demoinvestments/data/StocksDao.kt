@@ -2,9 +2,10 @@ package com.example.demoinvestments.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import java.io.Serializable
 
 @Dao
-interface StocksDao {
+interface StocksDao : Serializable {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: Stock)

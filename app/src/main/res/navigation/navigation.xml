@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.demoinvestments.ui.action_fragment.main_fragment.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_buyFragment"
+            app:destination="@id/buyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_sellFragment"
+            app:destination="@id/sellFragment" />
+        <argument
+            android:name="stock"
+            app:argType="com.example.demoinvestments.data.Stock" />
+    </fragment>
+    <fragment
+        android:id="@+id/buyFragment"
+        android:name="com.example.demoinvestments.ui.action_fragment.buy_fragment.BuyFragment"
+        android:label="BuyFragment" >
+        <argument
+            android:name="stock"
+            app:argType="com.example.demoinvestments.data.Stock" />
+    </fragment>
+    <fragment
+        android:id="@+id/sellFragment"
+        android:name="com.example.demoinvestments.ui.action_fragment.sell_fragment.SellFragment"
+        android:label="SellFragment" >
+        <argument
+            android:name="stock"
+            app:argType="com.example.demoinvestments.data.Stock" />
+    </fragment>
+</navigation>

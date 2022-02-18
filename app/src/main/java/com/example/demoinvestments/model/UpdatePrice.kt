@@ -7,9 +7,7 @@ import org.jsoup.Jsoup
 import java.lang.Exception
 
 suspend fun updatePrice(viewModel: MainViewModel, list: List<Stock>) {
-    Log.d("Error","?")
     list.forEach { stock ->
-        Log.d("Error","${stock.name}")
         val document = Jsoup.connect("https://ffin.ua/ru/stocks/${stock.token}").get()
         var currentPrice : Float
         try {

@@ -1,15 +1,13 @@
-package com.example.demoinvestments.ui
+package com.example.demoinvestments.ui.dialog_action
 
 import androidx.lifecycle.ViewModel
+import com.example.demoinvestments.data.Repository
+import com.example.demoinvestments.data.Stock
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import android.content.SharedPreferences
-import android.os.Parcelable
-import com.example.demoinvestments.data.*
 import java.io.Serializable
 
-
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class DialogActionViewModel(private val repository: Repository) : ViewModel(){
 
     fun insert(item: Stock) = GlobalScope.launch {
         repository.insert(item)

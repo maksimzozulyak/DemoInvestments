@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoInvestments">
         <activity
+            android:theme="@style/Theme.dialog_theme"
+            android:name=".ui.dialog_action.DialogAction"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

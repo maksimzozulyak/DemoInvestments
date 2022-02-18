@@ -3,6 +3,7 @@ package com.example.demoinvestments.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "stocks")
 data class Stock(
@@ -19,7 +20,7 @@ data class Stock(
     var logoUrl: String? = null,
     @ColumnInfo(name = "myStock")
     var myStock: Float? = null
-) {
+) : Serializable{
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
 }
