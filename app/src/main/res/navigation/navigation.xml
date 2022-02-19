@@ -16,7 +16,7 @@
             app:destination="@id/sellFragment" />
         <argument
             android:name="stock"
-            app:argType="com.example.demoinvestments.data.Stock" />
+            app:argType="com.example.demoinvestments.model.data.Stock" />
     </fragment>
     <fragment
         android:id="@+id/buyFragment"
@@ -24,7 +24,7 @@
         android:label="BuyFragment" >
         <argument
             android:name="stock"
-            app:argType="com.example.demoinvestments.data.Stock" />
+            app:argType="com.example.demoinvestments.model.data.Stock" />
     </fragment>
     <fragment
         android:id="@+id/sellFragment"
@@ -32,6 +32,6 @@
         android:label="SellFragment" >
         <argument
             android:name="stock"
-            app:argType="com.example.demoinvestments.data.Stock" />
+            app:argType="com.example.demoinvestments.model.data.Stock" />
     </fragment>
 </navigation>

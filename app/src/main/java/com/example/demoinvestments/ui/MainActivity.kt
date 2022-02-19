@@ -55,11 +55,6 @@ class MainActivity : AppCompatActivity() {
         balance_textview.setOnClickListener {
             DialogWindowChangeBalance(this).show()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
         viewModel.balance.observe(this) {
             balance_textview.text = it.toInt().toString()
         }
