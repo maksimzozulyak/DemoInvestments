@@ -3,17 +3,18 @@ package com.example.demoinvestments.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.demoinvestments.R
 import com.example.demoinvestments.data.*
 import com.example.demoinvestments.model.recyclerview.RecyclerViewAdapter
-import com.example.demoinvestments.model.DialogWindowAddingStock
+import com.example.demoinvestments.ui.dialogs.DialogWindowAddingStock
 import com.example.demoinvestments.model.updatePrice
+import com.example.demoinvestments.ui.dialogs.DialogWindowChangeBalance
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.net.SocketTimeoutException
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
@@ -21,11 +22,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        SharedPreference.setup(this)
 
         val repository = Repository(StockDatabase(this))
         val factory = FactoryViewModel(repository, this)
 
         viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
+
+        SharedPreference.setViewModel(viewModel)
 
         val adapter = RecyclerViewAdapter(listOf(), viewModel,this)
         stocks_recyclerview.layoutManager = LinearLayoutManager(this)
@@ -49,7 +53,16 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager?.beginTransaction()?.remove(fragment)?.commit()
             }
         }
+        balance_textview.setOnClickListener {
+            DialogWindowChangeBalance(this).show()
+        }
+    }
 
+    override fun onResume() {
+        super.onResume()
 
+        viewModel.balance.observe(this) {
+            balance_textview.text = it.toInt().toString()
+        }
     }
 }

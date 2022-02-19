@@ -5,35 +5,36 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.demoinvestments.ui.MainViewModel
 
-abstract class SharedPreferenceLiveData<T>(val sharedPrefs: SharedPreferences,
-                                           val key: String,
-                                           val defValue: T) : MutableLiveData<T>() {
+object  SharedPreference {
+    private var sharedPreferences: SharedPreferences? = null
 
-    private val preferenceChangeListener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
-        if (key == this.key) {
-            value = getValueFromPreferences(key, defValue)
-        }
+    private lateinit var viewModel: MainViewModel
+
+    fun setViewModel(viewModel: MainViewModel) {
+        this.viewModel = viewModel
     }
 
-    abstract fun getValueFromPreferences(key: String, defValue: T): T
-
-    override fun onActive() {
-        super.onActive()
-        value = getValueFromPreferences(key, defValue)
-        sharedPrefs.registerOnSharedPreferenceChangeListener(preferenceChangeListener)
+    fun setup(context: Context) {
+        sharedPreferences =
+            context.getSharedPreferences("demoinvestments.sharedprefs", Context.MODE_PRIVATE)
     }
+    var balance: Float?
+        get() = Key.BALANCE.getFloat()
+        set(value) {Key.BALANCE.setFloat(value)
+                    viewModel.balance.value = value
+                    }
 
-    override fun onInactive() {
-        sharedPrefs.unregisterOnSharedPreferenceChangeListener(preferenceChangeListener)
-        super.onInactive()
+    private enum class Key {
+        BALANCE;
+
+        fun getFloat(): Float? =
+            if (sharedPreferences!!.contains(name)) sharedPreferences!!.getFloat(name, 0f) else null
+
+        fun setFloat(value: Float?) =
+            value?.let { sharedPreferences!!.edit { putFloat(name, value) } } ?: remove()
+
+        fun remove() = sharedPreferences!!.edit { remove(name) }
     }
-}
-
-class SharedPreferenceIntLiveData(sharedPrefs: SharedPreferences, key: String, defValue: Int) :
-    SharedPreferenceLiveData<Int>(sharedPrefs, key, defValue) {
-    override fun getValueFromPreferences(key: String, defValue: Int): Int = sharedPrefs.getInt(key, defValue)
-}
-fun SharedPreferences.intLiveData(key: String, defValue: Int): SharedPreferenceLiveData<Int> {
-    return SharedPreferenceIntLiveData(this, key, defValue)
 }

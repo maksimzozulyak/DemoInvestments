@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.demoinvestments.R
 import com.example.demoinvestments.data.Repository
+import com.example.demoinvestments.data.SharedPreference
 import com.example.demoinvestments.data.Stock
 import com.example.demoinvestments.data.StockDatabase
 import com.example.demoinvestments.ui.FactoryViewModel
@@ -30,6 +31,8 @@ class DialogAction : AppCompatActivity() {
         stock_name_textview.text = stock.name
 
         var bundle = bundleOf("stock" to stock)
+
+        SharedPreference.balance = 20f
 
         Navigation.findNavController(this,R.id.host_fragment_dialog_activity).navigate(R.id.mainFragment, bundle)
     }
