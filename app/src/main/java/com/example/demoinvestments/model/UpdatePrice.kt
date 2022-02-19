@@ -1,7 +1,6 @@
 package com.example.demoinvestments.model
 
-import android.util.Log
-import com.example.demoinvestments.data.Stock
+import com.example.demoinvestments.model.data.Stock
 import com.example.demoinvestments.ui.MainViewModel
 import org.jsoup.Jsoup
 import java.lang.Exception

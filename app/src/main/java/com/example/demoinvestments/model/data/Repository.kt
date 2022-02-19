@@ -1,6 +1,4 @@
-package com.example.demoinvestments.data
-
-import java.io.Serializable
+package com.example.demoinvestments.model.data
 
 class Repository(private val db: StockDatabase){
 

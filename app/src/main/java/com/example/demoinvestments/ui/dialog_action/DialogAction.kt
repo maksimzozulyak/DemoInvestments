@@ -6,14 +6,9 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.demoinvestments.R
-import com.example.demoinvestments.data.Repository
-import com.example.demoinvestments.data.SharedPreference
-import com.example.demoinvestments.data.Stock
-import com.example.demoinvestments.data.StockDatabase
-import com.example.demoinvestments.ui.FactoryViewModel
-import com.example.demoinvestments.ui.MainActivity
-import com.example.demoinvestments.ui.MainViewModel
-import com.example.demoinvestments.ui.action_fragment.buy_fragment.BuyFragmentViewModel
+import com.example.demoinvestments.model.data.Repository
+import com.example.demoinvestments.model.data.Stock
+import com.example.demoinvestments.model.data.StockDatabase
 import kotlinx.android.synthetic.main.dialog_action.*
 
 class DialogAction : AppCompatActivity() {

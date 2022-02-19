@@ -3,12 +3,9 @@ package com.example.demoinvestments.ui
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import android.content.SharedPreferences
-import android.os.Parcelable
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.demoinvestments.data.*
-import java.io.Serializable
+import com.example.demoinvestments.model.data.Stock
+import com.example.demoinvestments.model.data.*
 
 
 class MainViewModel(private val repository: Repository) : ViewModel() {

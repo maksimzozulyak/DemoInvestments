@@ -2,14 +2,10 @@ package com.example.demoinvestments.ui.dialogs
 
 import android.content.Context
 import android.os.Bundle
-import android.text.InputFilter
 import android.view.Window
 import androidx.appcompat.app.AppCompatDialog
 import com.example.demoinvestments.R
-import com.example.demoinvestments.data.SharedPreference
-import com.example.demoinvestments.model.addStock
-import com.example.demoinvestments.ui.MainViewModel
-import kotlinx.android.synthetic.main.add_stock_dialogwindow.*
+import com.example.demoinvestments.model.data.SharedPreference
 import kotlinx.android.synthetic.main.change_balance_dialogwindow.*
 
 class DialogWindowChangeBalance(context: Context) : AppCompatDialog(context) {

@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.demoinvestments.data.Repository
-import com.example.demoinvestments.data.Stock
-import com.example.demoinvestments.data.StockDatabase
+import com.example.demoinvestments.model.data.Repository
+import com.example.demoinvestments.model.data.Stock
+import com.example.demoinvestments.model.data.StockDatabase
 import com.example.demoinvestments.databinding.SellFragmentBinding
 import com.example.demoinvestments.model.sellStock
 import kotlinx.android.synthetic.main.sell_fragment.*

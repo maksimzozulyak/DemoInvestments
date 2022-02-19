@@ -3,11 +3,10 @@ package com.example.demoinvestments.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.demoinvestments.R
-import com.example.demoinvestments.data.*
+import com.example.demoinvestments.model.data.*
 import com.example.demoinvestments.model.recyclerview.RecyclerViewAdapter
 import com.example.demoinvestments.ui.dialogs.DialogWindowAddingStock
 import com.example.demoinvestments.model.updatePrice

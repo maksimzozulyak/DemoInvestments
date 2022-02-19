@@ -1,4 +1,4 @@
-package com.example.demoinvestments.data
+package com.example.demoinvestments.model.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

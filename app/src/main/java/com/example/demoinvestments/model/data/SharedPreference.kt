@@ -1,10 +1,8 @@
-package com.example.demoinvestments.data
+package com.example.demoinvestments.model.data
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.demoinvestments.ui.MainViewModel
 
 object  SharedPreference {

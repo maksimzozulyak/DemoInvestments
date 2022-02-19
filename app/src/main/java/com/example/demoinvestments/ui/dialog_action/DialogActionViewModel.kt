@@ -1,11 +1,10 @@
 package com.example.demoinvestments.ui.dialog_action
 
 import androidx.lifecycle.ViewModel
-import com.example.demoinvestments.data.Repository
-import com.example.demoinvestments.data.Stock
+import com.example.demoinvestments.model.data.Repository
+import com.example.demoinvestments.model.data.Stock
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.io.Serializable
 
 class DialogActionViewModel(private val repository: Repository) : ViewModel(){
 

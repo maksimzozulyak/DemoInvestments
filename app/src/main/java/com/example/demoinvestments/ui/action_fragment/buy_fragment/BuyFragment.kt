@@ -7,16 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.example.demoinvestments.R
-import com.example.demoinvestments.data.Repository
-import com.example.demoinvestments.data.Stock
-import com.example.demoinvestments.data.StockDatabase
+import com.example.demoinvestments.model.data.Repository
+import com.example.demoinvestments.model.data.Stock
+import com.example.demoinvestments.model.data.StockDatabase
 import com.example.demoinvestments.databinding.BuyFragmentBinding
-import com.example.demoinvestments.databinding.MainFragmentBinding
 import com.example.demoinvestments.model.buyStock
 import kotlinx.android.synthetic.main.buy_fragment.*
-import kotlinx.android.synthetic.main.main_fragment.*
 
 class BuyFragment : Fragment() {
 
