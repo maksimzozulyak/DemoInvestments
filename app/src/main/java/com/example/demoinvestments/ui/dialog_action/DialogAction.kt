@@ -32,8 +32,6 @@ class DialogAction : AppCompatActivity() {
 
         var bundle = bundleOf("stock" to stock)
 
-        SharedPreference.balance = 20f
-
         Navigation.findNavController(this,R.id.host_fragment_dialog_activity).navigate(R.id.mainFragment, bundle)
     }
 
