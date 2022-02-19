@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.demoinvestments.R
 import com.example.demoinvestments.data.Repository
+import com.example.demoinvestments.data.SharedPreference
 import com.example.demoinvestments.data.Stock
 import com.example.demoinvestments.data.StockDatabase
 import com.example.demoinvestments.databinding.MainFragmentBinding
@@ -62,6 +63,7 @@ class MainFragment : Fragment() {
         }
         main_delete_button.setOnLongClickListener {
             viewModel.delete(stock)
+            SharedPreference.balance = SharedPreference.balance!! + (stock.myStock!! * stock.currentPrice!!)
             activity?.finish()
             true
         }
