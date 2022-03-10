@@ -12,6 +12,7 @@ import com.example.demoinvestments.model.data.Stock
 import com.example.demoinvestments.model.data.StockDatabase
 import com.example.demoinvestments.databinding.BuyFragmentBinding
 import com.example.demoinvestments.model.buyStock
+import com.example.demoinvestments.model.data.SharedPreference
 import kotlinx.android.synthetic.main.buy_fragment.*
 
 class BuyFragment : Fragment() {
@@ -43,8 +44,13 @@ class BuyFragment : Fragment() {
         buy_button.setOnClickListener {
             if (!buy_edittext.text.isEmpty()){
                 try {
-                    buyStock(stock,buy_edittext.text.toString().toFloat(),viewModel)
-                    activity?.finish()
+                    if (buy_edittext.text.toString().toFloat() > SharedPreference.balance!!){
+                        Toast.makeText(activity,"You don`t have enough money", Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        buyStock(stock, buy_edittext.text.toString().toFloat(), viewModel)
+                        activity?.finish()
+                    }
                 } catch (e : NumberFormatException) {
                     Toast.makeText(activity,"Wrong records", Toast.LENGTH_SHORT).show()
                 }
