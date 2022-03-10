@@ -8,7 +8,7 @@
         android:inputType="textCapCharacters"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="Enter stock token"
+        android:hint="Enter stock ticker"
         android:id="@+id/enter_token_edittext"
         android:layout_marginHorizontal="16dp"
         android:layout_weight="1"

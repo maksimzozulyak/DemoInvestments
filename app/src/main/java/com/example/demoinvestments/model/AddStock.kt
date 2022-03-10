@@ -1,5 +1,8 @@
 package com.example.demoinvestments.model
 
+import android.content.Context
+import android.os.Looper
+import android.widget.Toast
 import com.example.demoinvestments.model.data.Stock
 import com.example.demoinvestments.ui.MainViewModel
 import kotlinx.coroutines.GlobalScope
@@ -8,19 +11,22 @@ import org.jsoup.Jsoup
 import java.io.IOException
 import java.lang.Exception
 
-fun addStock(token : String, viewModel: MainViewModel) {
+fun addStock(token: String, viewModel: MainViewModel, context: Context) {
     GlobalScope.launch{
         try {
-            val stock = getData(token)
+            val stock = getData(token,context)
             if (stock.token != null) {
-                viewModel.insert(getData(token))
+                viewModel.insert(getData(token,context))
             }
         } catch (e: NumberFormatException) {
+            Looper.prepare()
+            Toast.makeText(context,"Wrong ticker", Toast.LENGTH_SHORT).show()
+            Looper.loop()
         }
     }
 }
 
-fun getData(token: String) : Stock {
+fun getData(token: String,context: Context) : Stock {
     try {
         val document = Jsoup.connect("https://ffin.ua/ru/stocks/$token").get()
         val name = document.select("h1[class=stock-header__info-company]").text()
@@ -40,6 +46,9 @@ fun getData(token: String) : Stock {
         }
         return Stock(token, name, currentPrice, currency, logoUrl, 0f)
     } catch (e: IOException) {
+        Looper.prepare()
+        Toast.makeText(context,"Wrong ticker", Toast.LENGTH_SHORT).show()
+        Looper.loop()
         return Stock()
     }
 }

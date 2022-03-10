@@ -1,5 +1,6 @@
 package com.example.demoinvestments.ui.dialogs
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.InputFilter
@@ -10,7 +11,7 @@ import com.example.demoinvestments.model.addStock
 import com.example.demoinvestments.ui.MainViewModel
 import kotlinx.android.synthetic.main.add_stock_dialogwindow.*
 
-class DialogWindowAddingStock(context: Context, private val viewModel: MainViewModel) : AppCompatDialog(context) {
+class DialogWindowAddingStock(val context: Activity, private val viewModel: MainViewModel) : AppCompatDialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,7 @@ class DialogWindowAddingStock(context: Context, private val viewModel: MainViewM
         setContentView(R.layout.add_stock_dialogwindow)
 
         confirm_adding_button.setOnClickListener {
-            addStock(enter_token_edittext.text.toString(),viewModel)
+            addStock(enter_token_edittext.text.toString(),viewModel,context)
             dismiss()
         }
 
