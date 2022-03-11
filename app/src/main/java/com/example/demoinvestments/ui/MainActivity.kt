@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val repository = Repository(StockDatabase(this))
         val factory = FactoryViewModel(repository, this)
 
-        viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         SharedPreference.setViewModel(viewModel)
 
@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter.setListener {
-            for (fragment in supportFragmentManager?.getFragments()!!) {
-            supportFragmentManager?.beginTransaction()?.remove(fragment)?.commit()
+            for (fragment in supportFragmentManager.fragments) {
+                supportFragmentManager.beginTransaction().remove(fragment).commit()
             }
         }
         balance_textview.setOnClickListener {

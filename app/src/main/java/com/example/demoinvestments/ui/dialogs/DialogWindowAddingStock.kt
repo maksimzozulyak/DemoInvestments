@@ -23,7 +23,7 @@ class DialogWindowAddingStock(val context: Activity, private val viewModel: Main
             dismiss()
         }
 
-        enter_token_edittext.setFilters(enter_token_edittext.getFilters() + InputFilter.AllCaps())
+        enter_token_edittext.filters = enter_token_edittext.filters + InputFilter.AllCaps()
 
         cancel_adding_button.setOnClickListener {
             cancel()

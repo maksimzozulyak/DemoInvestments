@@ -31,12 +31,14 @@ class MainFragment : Fragment() {
     ): View {
         val repository = Repository(StockDatabase(requireContext()))
         viewModel =
-            ViewModelProvider(this, MainFragmentViewModelFactory(repository))[MainFragmentViewModel::class.java]
+            ViewModelProvider(
+                this,
+                MainFragmentViewModelFactory(repository)
+            )[MainFragmentViewModel::class.java]
 
         _binding = MainFragmentBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

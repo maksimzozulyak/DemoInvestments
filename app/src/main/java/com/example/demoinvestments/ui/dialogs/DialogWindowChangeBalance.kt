@@ -16,8 +16,12 @@ class DialogWindowChangeBalance(context: Context) : AppCompatDialog(context) {
         setContentView(R.layout.change_balance_dialogwindow)
 
         confirm_changing_balance_button.setOnClickListener {
-            SharedPreference.balance = enter_balance_edittext.text.toString().toFloat()
-            dismiss()
+            if (enter_balance_edittext.text.isEmpty()){
+
+            } else {
+                SharedPreference.balance = enter_balance_edittext.text.toString().toFloat()
+                dismiss()
+            }
         }
 
         cancel_changing_balance_button.setOnClickListener {

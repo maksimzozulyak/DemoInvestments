@@ -6,22 +6,20 @@ import org.jsoup.Jsoup
 import java.lang.Exception
 
 suspend fun updatePrice(viewModel: MainViewModel, list: List<Stock>) {
-    list.forEach { stock ->
+    list.forEach { stock: Stock ->
         val document = Jsoup.connect("https://ffin.ua/ru/stocks/${stock.token}").get()
-        var currentPrice : Float
-        try {
-            var listOfPrice =
+        val currentPrice: Float = try {
+            val listOfPrice =
                 document.select("div[class=curr-price curr-price--up]").text()
                     .split(' ')
-            currentPrice = listOfPrice[0].toFloat()
+            listOfPrice[0].toFloat()
         } catch (e: Exception) {
-            var listOfPrice =
+            val listOfPrice =
                 document.select("div[class=curr-price curr-price--down]").text()
                     .split(' ')
-            currentPrice = listOfPrice[0].toFloat()
+            listOfPrice[0].toFloat()
         }
-        val newStock = stock
-        newStock.currentPrice = currentPrice
-        viewModel.update(newStock)
+        stock.currentPrice = currentPrice
+        viewModel.update(stock)
     }
 }

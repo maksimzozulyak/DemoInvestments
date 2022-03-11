@@ -28,21 +28,23 @@ class BuyFragment : Fragment() {
     ): View {
         val repository = Repository(StockDatabase(requireContext()))
         viewModel =
-            ViewModelProvider(this,BuyFragmentViewModelFactory(repository))[BuyFragmentViewModel::class.java]
+            ViewModelProvider(
+                this,
+                BuyFragmentViewModelFactory(repository)
+            )[BuyFragmentViewModel::class.java]
 
         _binding = BuyFragmentBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var stock : Stock = arguments?.getSerializable("stock") as Stock
+        val stock : Stock = arguments?.getSerializable("stock") as Stock
 
         buy_button.setOnClickListener {
-            if (!buy_edittext.text.isEmpty()){
+            if (buy_edittext.text.isNotEmpty()){
                 try {
                     if (buy_edittext.text.toString().toFloat() > SharedPreference.balance!!){
                         Toast.makeText(activity,"You don`t have enough money", Toast.LENGTH_SHORT).show()

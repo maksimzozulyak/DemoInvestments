@@ -14,6 +14,14 @@ import java.lang.Exception
 fun addStock(token: String, viewModel: MainViewModel, context: Context) {
     GlobalScope.launch{
         try {
+            viewModel.allStocksList().forEach {
+                if (it.token == token){
+                    Looper.prepare()
+                    Toast.makeText(context,"You already have this stock", Toast.LENGTH_SHORT).show()
+                    Looper.loop()
+                    return@launch
+                }
+            }
             val stock = getData(token,context)
             if (stock.token != null) {
                 viewModel.insert(getData(token,context))
@@ -31,15 +39,15 @@ fun getData(token: String,context: Context) : Stock {
         val document = Jsoup.connect("https://ffin.ua/ru/stocks/$token").get()
         val name = document.select("h1[class=stock-header__info-company]").text()
         val logoUrl = document.select("div[class=stock-header__logo]").select("img").attr("src")
-        var currency = ""
-        var currentPrice = 0f
+        var currency: String
+        var currentPrice : Float
         try {
-            var listOfPrice =
+            val listOfPrice =
                 document.select("div[class=curr-price curr-price--up]").text().split(' ')
             currentPrice = listOfPrice[0].toFloat()
             currency = listOfPrice[1]
         } catch (e: Exception) {
-            var listOfPrice =
+            val listOfPrice =
                 document.select("div[class=curr-price curr-price--down]").text().split(' ')
             currentPrice = listOfPrice[0].toFloat()
             currency = listOfPrice[1]

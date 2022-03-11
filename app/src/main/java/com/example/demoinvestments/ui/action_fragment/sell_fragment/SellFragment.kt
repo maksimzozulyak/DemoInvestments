@@ -28,12 +28,14 @@ class SellFragment : Fragment() , SeekBar.OnSeekBarChangeListener{
     ): View {
         val repository = Repository(StockDatabase(requireContext()))
         viewModel =
-            ViewModelProvider(this,SellFragmentViewModelFactory(repository))[SellFragmentViewModel::class.java]
+            ViewModelProvider(
+                this,
+                SellFragmentViewModelFactory(repository)
+            )[SellFragmentViewModel::class.java]
 
         _binding = SellFragmentBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

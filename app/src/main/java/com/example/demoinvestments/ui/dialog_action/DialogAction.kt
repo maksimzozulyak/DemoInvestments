@@ -25,7 +25,7 @@ class DialogAction : AppCompatActivity() {
 
         stock_name_textview.text = stock.name
 
-        var bundle = bundleOf("stock" to stock)
+        val bundle = bundleOf("stock" to stock)
 
         Navigation.findNavController(this,R.id.host_fragment_dialog_activity).navigate(R.id.mainFragment, bundle)
     }
