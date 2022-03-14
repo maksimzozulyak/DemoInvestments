@@ -7,18 +7,20 @@ import java.lang.Exception
 
 suspend fun updatePrice(viewModel: MainViewModel, list: List<Stock>) {
     list.forEach { stock: Stock ->
-        val document = Jsoup.connect("https://ffin.ua/ru/stocks/${stock.token}").get()
-        val currentPrice: Float = try {
-            val listOfPrice =
-                document.select("div[class=curr-price curr-price--up]").text()
-                    .split(' ')
-            listOfPrice[0].toFloat()
-        } catch (e: Exception) {
-            val listOfPrice =
-                document.select("div[class=curr-price curr-price--down]").text()
-                    .split(' ')
-            listOfPrice[0].toFloat()
-        }
+        val currentPrice: Float
+        //try {
+            val document = Jsoup.connect("https://ffin.ua/ru/stocks/${stock.token}").get()
+            currentPrice = try {
+                val listOfPrice =
+                    document.select("div[class=curr-price curr-price--up]").text()
+                        .split(' ')
+                listOfPrice[0].toFloat()
+            } catch (e: Exception) {
+                val listOfPrice =
+                    document.select("div[class=curr-price curr-price--down]").text()
+                        .split(' ')
+                listOfPrice[0].toFloat()
+            }
         stock.currentPrice = currentPrice
         viewModel.update(stock)
     }

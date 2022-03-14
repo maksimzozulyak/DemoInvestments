@@ -40,7 +40,8 @@ class RecyclerViewAdapter(var list: List<Stock>, val viewModel: MainViewModel, p
         holder.itemView.token_textview.text = currentStock.token
         holder.itemView.price_textview.text = currentStock.currentPrice.toString()
         holder.itemView.currency_textview.text = currentStock.currency
-        holder.itemView.mystock_textview.text = "${"%.1f".format(currentStock.myStock)} (${(currentStock.myStock!! * currentStock.currentPrice!!).toInt()})"
+        holder.itemView.mystock_textview.text = "%.1f".format(currentStock.myStock)
+        holder.itemView.mystock_money_textview.text = (currentStock.myStock!! * currentStock.currentPrice!!).toInt().toString()
         try {
             Picasso.get().load(currentStock.logoUrl).into(holder.itemView.logo_imageview)
         } catch (e: IllegalArgumentException) {}
