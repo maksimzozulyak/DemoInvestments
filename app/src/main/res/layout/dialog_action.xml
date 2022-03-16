@@ -4,7 +4,8 @@
     android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:id="@+id/buy_stock_dialog_window">
+    android:id="@+id/buy_stock_dialog_window"
+    android:background="@drawable/main_background">
 
     <TextView
         android:gravity="center"
