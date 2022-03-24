@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/main_background">
 
+
     <EditText
         android:inputType="textCapCharacters"
         android:layout_width="match_parent"
