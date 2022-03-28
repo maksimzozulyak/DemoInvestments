@@ -23,10 +23,10 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     }
 
     var balance = MutableLiveData<Float>().apply {
-        if (SharedPreference.balance == null){
-            value = 0f
+        value = if (SharedPreference.balance == null){
+            0f
         } else {
-            value = SharedPreference.balance
+            SharedPreference.balance
         }
     }
     fun allStocks() = repository.allStocks()

@@ -6,14 +6,14 @@ import com.example.demoinvestments.ui.action_fragment.buy_fragment.BuyFragmentVi
 import com.example.demoinvestments.ui.action_fragment.sell_fragment.SellFragmentViewModel
 
 fun buyStock(stock : Stock, money: Float, viewModel: BuyFragmentViewModel) {
-    var newStock = stock;
+    val newStock = stock;
     newStock.myStock = stock.myStock!! + money/stock.currentPrice!!
     SharedPreference.balance = SharedPreference.balance!! - money
     viewModel.update(newStock)
 }
 
 fun sellStock(stock : Stock, money: Float, viewModel: SellFragmentViewModel) {
-    var newStock = stock;
+    val newStock = stock;
     newStock.myStock = stock.myStock!! - money/stock.currentPrice!!
     SharedPreference.balance = SharedPreference.balance!! + money
     viewModel.update(newStock)

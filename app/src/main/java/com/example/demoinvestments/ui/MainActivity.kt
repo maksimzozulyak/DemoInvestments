@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         SharedPreference.setViewModel(viewModel)
 
-        val adapter = RecyclerViewAdapter(listOf(), viewModel,this)
+        val adapter = RecyclerViewAdapter(listOf(), this)
         stocks_recyclerview.layoutManager = LinearLayoutManager(this)
         stocks_recyclerview.adapter = adapter
 

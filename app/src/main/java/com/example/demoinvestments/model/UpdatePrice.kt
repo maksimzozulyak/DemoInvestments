@@ -5,10 +5,9 @@ import com.example.demoinvestments.ui.MainViewModel
 import org.jsoup.Jsoup
 import java.lang.Exception
 
-suspend fun updatePrice(viewModel: MainViewModel, list: List<Stock>) {
+fun updatePrice(viewModel: MainViewModel, list: List<Stock>) {
     list.forEach { stock: Stock ->
         val currentPrice: Float
-        //try {
             val document = Jsoup.connect("https://ffin.ua/ru/stocks/${stock.token}").get()
             currentPrice = try {
                 val listOfPrice =

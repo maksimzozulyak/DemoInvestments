@@ -14,27 +14,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Delete" />
+        android:text="@string/delete" />
 
     <Button
         android:id="@+id/main_cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 
     <Button
         android:id="@+id/main_sell_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Sell" />
+        android:text="@string/sell" />
 
     <Button
         android:id="@+id/main_buy_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Buy" />
+        android:text="@string/buy" />
 
 </LinearLayout>

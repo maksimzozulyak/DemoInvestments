@@ -20,7 +20,6 @@ abstract class StockDatabase : RoomDatabase(){
                 instance = it
             }
         }
-
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext, StockDatabase::class.java, "StockDatabase.db").build()
     }

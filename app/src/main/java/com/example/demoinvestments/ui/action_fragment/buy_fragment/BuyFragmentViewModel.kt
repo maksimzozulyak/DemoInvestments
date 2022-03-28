@@ -13,9 +13,4 @@ class BuyFragmentViewModel(private val repository: Repository) : ViewModel(){
     fun update(item: Stock) = GlobalScope.launch {
         repository.update(item)
     }
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
 }

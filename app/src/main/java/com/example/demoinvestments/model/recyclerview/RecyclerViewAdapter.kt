@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.stock_item.view.*
 import java.lang.IllegalArgumentException
 
-class RecyclerViewAdapter(var list: List<Stock>, val viewModel: MainViewModel, private var activity: MainActivity) :
+class RecyclerViewAdapter(var list: List<Stock>, private var activity: MainActivity) :
     RecyclerView.Adapter<RecyclerViewAdapter.StockViewHolder>() {
 
     private var listener: (() -> Unit)? = null
@@ -36,20 +36,24 @@ class RecyclerViewAdapter(var list: List<Stock>, val viewModel: MainViewModel, p
     }
     override fun onBindViewHolder(holder: StockViewHolder, position: Int) {
         val currentStock = list[position]
-        holder.itemView.name_textview.text = currentStock.name
-        holder.itemView.token_textview.text = currentStock.token
-        holder.itemView.price_textview.text = currentStock.currentPrice.toString()
-        holder.itemView.currency_textview.text = currentStock.currency
-        holder.itemView.mystock_textview.text = "%.1f".format(currentStock.myStock)
-        holder.itemView.mystock_money_textview.text = (currentStock.myStock!! * currentStock.currentPrice!!).toInt().toString()
-        try {
-            Picasso.get().load(currentStock.logoUrl).into(holder.itemView.logo_imageview)
-        } catch (e: IllegalArgumentException) {}
+        with(holder.itemView) {
+            name_textview.text = currentStock.name
+            token_textview.text = currentStock.token
+            price_textview.text = currentStock.currentPrice.toString()
+            currency_textview.text = currentStock.currency
+            mystock_textview.text = "%.1f".format(currentStock.myStock)
+            mystock_money_textview.text =
+                (currentStock.myStock!! * currentStock.currentPrice!!).toInt().toString()
+            try {
+                Picasso.get().load(currentStock.logoUrl).into(logo_imageview)
+            } catch (e: IllegalArgumentException) {
+            }
 
-        holder.itemView.stockLayout.setOnClickListener {
-            val intent = Intent(activity, DialogAction::class.java)
-            intent.putExtra("stock", currentStock)
-            startActivity(activity,intent,null)
+            stockLayout.setOnClickListener {
+                val intent = Intent(activity, DialogAction::class.java)
+                intent.putExtra("stock", currentStock)
+                startActivity(activity, intent, null)
+            }
         }
     }
 }

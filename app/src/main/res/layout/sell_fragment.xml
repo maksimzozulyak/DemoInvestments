@@ -49,14 +49,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
         <Button
             android:id="@+id/sell_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sell" />
+            android:text="@string/sell" />
     </LinearLayout>
 
 </LinearLayout>
